@@ -4,15 +4,15 @@ CFLAGS=-g
 all: dltest hmtest
 
 dltest: dllist.o dltest.o
-	$(CC) $(CLFAGS) -o $@  $^
+	$(CC) $(CFLAGS) -o $@ $^
 
 hmtest: dllist.o hashMap.o hmtest.o
-	$(CC) $(CLFAGS) -o $@  $^ -pthread
+	$(CC) $(CFLAGS) -o $@ $^ -pthread
 
 dllist.o : dllist.c dllist.h
 	$(CC) $(CFLAGS) -c $<
 
-hashMap.o : hashMap.c  hashMap.h dllist.h
+hashMap.o : hashMap.c hashMap.h dllist.h
 	$(CC) $(CFLAGS) -c $< -pthread
 
 hmtest.o : hmtest.c hashMap.h dllist.h
